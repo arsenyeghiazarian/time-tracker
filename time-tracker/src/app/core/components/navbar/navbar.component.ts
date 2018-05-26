@@ -6,10 +6,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
+  submenuItems: Array<any>;
   constructor() { }
 
   ngOnInit() {
+    this.submenuItems = [
+      {
+        route: 'timer',
+        name: 'Timer',
+        iconName: 'access_time'
+      },
+      {
+        route: 'dashboard',
+        name: 'Dashboard',
+        iconName: 'equalizer'
+      }
+    ]
   }
 
 }

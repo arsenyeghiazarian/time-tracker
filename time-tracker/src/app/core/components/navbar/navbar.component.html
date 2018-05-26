@@ -1,3 +1,8 @@
-<p>
-  navbar works!
-</p>
+<div>
+  <ul>
+    <li class="nav-item" *ngFor="let item of submenuItems">
+      <a class="nav-link" >
+        <i class="material-icons"> {{item.iconName}}</i> {{ item.name }}</a>
+    </li>
+  </ul>
+</div>
