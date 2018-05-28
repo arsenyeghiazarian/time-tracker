@@ -1,8 +1,38 @@
-<div>
-  <ul>
-    <li class="nav-item" *ngFor="let item of submenuItems">
-      <a class="nav-link" >
-        <i class="material-icons"> {{item.iconName}}</i> {{ item.name }}</a>
-    </li>
-  </ul>
+<div class="nav-bar-container">
+  <div class="nav-bar-header" fxLayout="row" fxLayoutAlign="space-between center">
+    <h4>Time Tracker</h4>
+    <div (clickOutside)="isNotificationsOpen = false">
+      <div class="notifications-wrapper">
+        <button (click)="isNotificationsOpen = !isNotificationsOpen">
+          <i class="material-icons not-icon">notifications</i>
+        </button>
+        <div class="not-content" *ngIf="isNotificationsOpen">
+          <div class="not-header" fxLayout="row" fxLayoutAlign="space-between center">
+            <p>NOTIFICATIONS</p>
+            <button>MARK ALL AS READ</button>
+          </div>
+          <ul class="not-list">
+            <li fxLayout="column"
+                fxLayoutAlign=" start"
+                *ngFor="let notification of notifications">
+              <span>{{notification}}</span>
+              <button>Read More</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav>
+    <ul>
+      <li *ngFor="let item of submenuItems" class="nav-list">
+        <a [routerLink]="item.path" routerLinkActive="active-class" fxLayout="row" fxLayoutAlign=" center">
+          <i class="material-icons icon-style"> {{item.iconName}}</i>
+          <span>{{ item.name }}</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
 </div>
+<router-outlet></router-outlet>
+
