@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import {MatFormFieldModule, MatSelectModule} from "@angular/material";
-import {AppRoutingModule} from "../app-routing.module";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { ClickOutsideModule } from 'ng-click-outside';
+import { RouterModule } from "@angular/router";
 
 
 @NgModule({
@@ -12,7 +12,7 @@ import { ClickOutsideModule } from 'ng-click-outside';
     CommonModule,
     MatSelectModule,
     MatFormFieldModule,
-    AppRoutingModule,
+    RouterModule,
     FlexLayoutModule,
     ClickOutsideModule
   ],

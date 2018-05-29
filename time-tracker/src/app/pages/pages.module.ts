@@ -3,8 +3,7 @@ import { TimerComponent } from './components/timer/timer.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
-  imports: [
-  ],
+  imports: [],
   declarations: [
     TimerComponent,
     DashboardComponent

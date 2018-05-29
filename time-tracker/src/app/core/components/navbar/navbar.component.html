@@ -1,7 +1,8 @@
-<div class="nav-bar-container">
-  <div class="nav-bar-header" fxLayout="row" fxLayoutAlign="space-between center">
-    <h4>Time Tracker</h4>
-    <div (clickOutside)="isNotificationsOpen = false">
+<div class="nav-bar-container" [ngClass]="{'isMobile' : uiService.isMobile()}">
+  <div class="nav-bar-header" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutAlign.lt-md="center center">
+    <h4 *ngIf="uiService.isDesktop()">Time Tracker</h4>
+    <h4 *ngIf="uiService.isMobile()">T</h4>
+    <div *ngIf="uiService.isDesktop()" (clickOutside)="isNotificationsOpen = false">
       <div class="notifications-wrapper">
         <button (click)="isNotificationsOpen = !isNotificationsOpen">
           <i class="material-icons not-icon">notifications</i>
@@ -24,15 +25,17 @@
     </div>
   </div>
   <nav>
-    <ul>
-      <li *ngFor="let item of submenuItems" class="nav-list">
-        <a [routerLink]="item.path" routerLinkActive="active-class" fxLayout="row" fxLayoutAlign=" center">
-          <i class="material-icons icon-style"> {{item.iconName}}</i>
-          <span>{{ item.name }}</span>
-        </a>
-      </li>
-    </ul>
+    <div *ngFor="let items of submenuItems">
+      <p class="sub-menu-title" *ngIf="items.title !== null && uiService.isDesktop()">{{items.title}}</p>
+      <ul>
+        <li *ngFor="let item of items.children" class="nav-list">
+          <a [routerLink]="item.path" routerLinkActive="active-class" fxLayout="row" fxLayoutAlign=" center">
+            <i class="material-icons icon-style"> {{item.iconName}}</i>
+            <span *ngIf="uiService.isDesktop()">{{ item.name }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
   </nav>
 </div>
-<router-outlet></router-outlet>
 
